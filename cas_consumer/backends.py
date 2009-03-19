@@ -13,8 +13,6 @@ cas_login = cas_base + 'login/'
 cas_validate = cas_base + 'validate/'
 cas_logout = cas_base + 'logout/'
 cas_next_default = settings.CAS_NEXT_DEFAULT
-cas_profile = settings.CAS_PROFILE
-cas_register = settings.CAS_REGISTER
 
 def _verify_cas1(ticket, service):
     """Verifies CAS 1.0 authentication ticket.

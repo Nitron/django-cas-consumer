@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login, logout as auth_logout
 from django.conf import settings
 
-__all__ = ['login', 'profile', 'register', 'logout',]
+__all__ = ['login', 'logout',]
 
 service = settings.CAS_SERVICE
 cas_base = settings.CAS_BASE
