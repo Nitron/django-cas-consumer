@@ -26,11 +26,12 @@ To install, run the following command from this directory:
 
     	``python setup.py install``
 
-Or, put cas_provider somewhere on your Python path.
+Or, put cas_consumer somewhere on your Python path.
 	
 USAGE
 ======
 
 #. Add ``'cas_consumer'`` to your ``INSTALLED_APPS`` tuple in *settings.py*.
 #. In *settings.py*, set ``LOGIN_URL`` to ``'/cas/login/'`` and ``LOGOUT_URL`` to ``'/cas/logout/'``
+#. in *settings.py*, set ``CAS_SERVICE`` to the full URL of your login page (``'http://example.com/cas/login/'``), ``CAS_BASE`` to the ``CAS base`` of your provider (``'http://provider.com/cas/'``), CAS_NEXT_DEFAULT to your desired landing page (``'/'``), and ``CAS_COMPLETELY_LOGOUT`` to either ``True`` or ``False``.
 #. In *urls.py*, put the following line: ``(r'^cas/', include('cas_consumer.urls')),``
