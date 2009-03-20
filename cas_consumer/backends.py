@@ -43,8 +43,8 @@ class CASBackend(object):
         try:
             user = User.objects.get(username=username)
         except User.DoesNotExist:
-            # user will have an "unusable" password
-            user = User.objects.create_user(username, '')
+            # user will have an "unusable" password (thanks to James Bennett)
+            user = User.objects.create_user(username, django.contrib.auth.models.UNUSABLE_PASSWORD)
             user.save()
         return user
 

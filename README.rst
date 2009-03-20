@@ -33,5 +33,14 @@ USAGE
 
 #. Add ``'cas_consumer'`` to your ``INSTALLED_APPS`` tuple in *settings.py*.
 #. In *settings.py*, set ``LOGIN_URL`` to ``'/cas/login/'`` and ``LOGOUT_URL`` to ``'/cas/logout/'``
-#. in *settings.py*, set ``CAS_SERVICE`` to the full URL of your login page (``'http://example.com/cas/login/'``), ``CAS_BASE`` to the ``CAS base`` of your provider (``'http://provider.com/cas/'``), CAS_NEXT_DEFAULT to your desired landing page (``'/'``), and ``CAS_COMPLETELY_LOGOUT`` to either ``True`` or ``False``.
+#. In *settings.py*, set the CAS_* settings (detailed below).
 #. In *urls.py*, put the following line: ``(r'^cas/', include('cas_consumer.urls')),``
+
+SETTINGS
+========
+
+- *CAS_BASE*: The base URL of the CAS provider. Example: ``'http://provider.com/cas/'``. No default.
+- *CAS_SERVICE*: The "service" URL to report to the provider. Example: ``'http://example.com/cas/login/'``. No default.
+- *CAS_NEXT_DEFAULT*: URL to redirect to after successful login. Example (default): ``'/'``
+- *CAS_COMPLETELY_LOGOUT*: Boolean. If True, the CAS provider will be notified of logout. Default: True
+- *CAS_REDIRECT_ON_LOGOUT*: URL to redirect to after logout. Example (default): ``'/'``
