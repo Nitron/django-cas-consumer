@@ -44,3 +44,25 @@ SETTINGS
 - *CAS_NEXT_DEFAULT*: URL to redirect to after successful login. Example (default): ``'/'``
 - *CAS_COMPLETELY_LOGOUT*: Boolean. If True, the CAS provider will be notified of logout. Default: True
 - *CAS_REDIRECT_ON_LOGOUT*: URL to redirect to after logout. Example (default): ``'/'``
+- *CAS_USERINFO_CALLBACK* (optional): Python callable that retrieves full name, email, etc from an external source. Default: None
+
+CAS_USERINFO_CALLBACK
+=====================
+
+Example::
+
+    def getUserInfo(user):
+        """ Calls getFirstName, getLastName, getEmail, which call
+            a remote service to get that information.
+            Their implementations are not important for this
+            example.
+        """
+        user.first_name = getFirstName(user.username)
+        user.last_name = getLastName(user.username)
+        user.email = getEmail(user.username)
+        user.save()
+
+In settings.py::
+
+    from your_app.helpers import getUserInfo
+    CAS_USERINFO_CALLBACK = getUserInfo

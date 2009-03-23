@@ -6,6 +6,7 @@ _DEFAULTS = {
     'CAS_REDIRECT_ON_LOGOUT': '/',
     'CAS_NEXT_DEFAULT': '/',
     'CAS_COMPLETELY_LOGOUT': True,
+    'CAS_USERINFO_CALLBACK': None,
 }
 
 for key, value in _DEFAULTS.iteritems():

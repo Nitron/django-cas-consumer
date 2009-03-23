@@ -46,6 +46,8 @@ class CASBackend(object):
             # user will have an "unusable" password (thanks to James Bennett)
             user = User.objects.create_user(username, django.contrib.auth.models.UNUSABLE_PASSWORD)
             user.save()
+        if settings.CAS_USERINFO_CALLBACK is not None:
+            settings.CAS_USERINFO_CALLBACK(user)
         return user
 
     def get_user(self, user_id):
