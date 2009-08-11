@@ -13,9 +13,9 @@ __all__ = ['login', 'logout',]
 
 service = settings.CAS_SERVICE
 cas_base = settings.CAS_BASE
-cas_login = cas_base + 'login/'
-cas_validate = cas_base + 'validate/'
-cas_logout = cas_base + 'logout/'
+cas_login = cas_base + settings.CAS_LOGIN_URL
+cas_validate = cas_base + settings.CAS_VALIDATE_URL
+cas_logout = cas_base + settings.CAS_LOGOUT_URL
 cas_next_default = settings.CAS_NEXT_DEFAULT
 cas_redirect_on_logout = settings.CAS_REDIRECT_ON_LOGOUT
 
@@ -29,10 +29,15 @@ def login(request):
         5. Otherwise, the process fails and displays an error message.
 
     """
-    ticket = request.GET.get('ticket', None)
+    ticket = request.GET.get(settings.CAS_TICKET_LABEL, None)
     next = request.GET.get('next_page', cas_next_default)
     if ticket is None:
-        return HttpResponseRedirect('%s?service=%s' % (cas_login, service))
+        params = settings.CAS_EXTRA_PARAMS
+        params.update({settings.CAS_SERVICE_LABEL: service})
+        url = cas_login + '?'
+        raw_params = ['%s=%s' % (key, value) for key, value in params.items()]
+        url += '&'.join(raw_params)
+        return HttpResponseRedirect(url)
     user = authenticate(service=service, ticket=ticket)
     if user is not None:
         auth_login(request, user)
@@ -42,7 +47,7 @@ def login(request):
         return HttpResponseRedirect(cas_next_default)
     else:
         return HttpResponseForbidden("Error authenticating with CAS")
-        
+
 def logout(request, next_page=cas_redirect_on_logout):
     """ Logs the current user out. If *CAS_COMPLETELY_LOGOUT* is true, redirect to the provider's logout page,
         which will redirect to ``next_page``.
