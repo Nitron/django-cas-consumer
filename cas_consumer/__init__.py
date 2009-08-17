@@ -10,7 +10,8 @@ _DEFAULTS = {
 
     'CAS_SERVICE_LABEL': 'service',
     'CAS_TICKET_LABEL': 'ticket',
-    'CAS_EXTRA_PARAMS': {},
+    'CAS_EXTRA_LOGIN_PARAMS': {},
+    'CAS_EXTRA_VALIDATION_PARAMS': {},
 
     'CAS_LOGIN_URL': 'login/',
     'CAS_VALIDATE_URL': 'validate/',

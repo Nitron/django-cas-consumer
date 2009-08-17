@@ -32,7 +32,7 @@ def login(request):
     ticket = request.GET.get(settings.CAS_TICKET_LABEL, None)
     next = request.GET.get('next_page', cas_next_default)
     if ticket is None:
-        params = settings.CAS_EXTRA_PARAMS
+        params = settings.CAS_EXTRA_LOGIN_PARAMS
         params.update({settings.CAS_SERVICE_LABEL: service})
         url = cas_login + '?'
         raw_params = ['%s=%s' % (key, value) for key, value in params.items()]

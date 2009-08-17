@@ -19,7 +19,7 @@ def _verify_cas1(ticket, service):
 
     Returns username on success and None on failure.
     """
-    params = settings.CAS_EXTRA_PARAMS
+    params = settings.CAS_EXTRA_VALIDATION_PARAMS
     params.update({settings.CAS_TICKET_LABEL: ticket, settings.CAS_SERVICE_LABEL: service})
     url = cas_validate + '?'
     if settings.CAS_URLENCODE_PARAMS:
