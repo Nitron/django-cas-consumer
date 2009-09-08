@@ -93,4 +93,4 @@ Some CAS server implementations require that GET variables arrive in a specific 
 		(CAS_TICKET_LABEL, None),
 		(CAS_SERVICE_LABEL, None)))
 
-The ``odict`` package can be installed via pypi and can also be found via the `Plone Archetypes SVN repo <https://svn.plone.org/svn/archetypes/AGX/odict/>`_. Any Class that implements both the update() and items() ``dict` methods should work though.
+The ``odict`` package can be installed via pypi and can also be found via the [Plone Archetypes SVN repo](https://svn.plone.org/svn/archetypes/AGX/odict/). Any Class that implements both the ``update()`` and ``items()`` ``dict`` methods should work though.
