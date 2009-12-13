@@ -44,7 +44,7 @@ def login(request):
         name = user.first_name or user.username
         message ="Login succeeded. Welcome, %s." % name
         user.message_set.create(message=message)
-        return HttpResponseRedirect(cas_next_default)
+        return HttpResponseRedirect(next)
     else:
         return HttpResponseForbidden("Error authenticating with CAS")
 
